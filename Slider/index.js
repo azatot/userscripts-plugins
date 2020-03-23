@@ -1,0 +1,1 @@
+var slider1 = sliderFactory.createNewSlider();

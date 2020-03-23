@@ -1,0 +1,47 @@
+body{
+    display: flex;
+    flex-direction: column;
+
+}
+.dos-slider{
+    display: inline-flex;
+    width: 70%;
+    justify-content: center;
+    /* justify-items: center; */
+    background-color: rgb(196, 196, 196);
+    margin: 0 auto;
+    border-radius: 10px;
+    margin-top: 1em;
+}
+.dos-slider .button {
+    display: block;
+    font-size: 2em;
+    /* color: mediumturquoise; */
+    text-align: center; 
+    width: 3em;
+    font-weight: 900;
+    height: 100px;
+    align-self: center;
+    border-width: 0px;
+    border-style: solid;
+    border-radius: 100%;
+    background-color: white;
+}
+.dos-slider .button:hover{
+    background-color: mediumturquoise;
+    color: white;
+    cursor: pointer;
+}
+.dos-slider .button:focus{
+    outline: none;
+}
+.dos-slider .dos_slides{
+    display: inline-block;
+    text-align: center;
+    width: 700px;
+    height: 300px;
+    padding: 2em;
+    /* border: 1px solid; */
+    border-radius: 10px;
+    cursor: pointer;
+}

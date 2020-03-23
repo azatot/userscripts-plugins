@@ -1,0 +1,2675 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <!--  PLUGIN CSS-->
+    <style>
+        #plugin h1, h2, h3 {
+            margin: 0;
+            padding: 0;
+        }
+        #table_root {
+            padding-top: 50px;
+        }
+
+        #plugin {
+            display: flex;
+            width: 350px;
+            position: fixed;
+            font-family: 'Open Sans', sans-serif;
+            flex-direction: column;
+        }
+        #plugin a {
+            text-decoration: none;
+            color: white;
+        }
+        form {
+            display: flex;
+            width: fit-content;
+            height: 85vh;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 5px;
+            padding: 5px;
+            overflow: auto;
+            background: #ececec;
+            width: -moz-fit-content;
+        }
+
+        form::-webkit-scrollbar {
+            width: 0;
+        }
+
+        hr {
+            width: 100%;
+        }
+
+        form > div > div {
+            display: flex;
+            flex-direction: column;
+            margin: 5px;
+        }
+
+        textarea {
+            width: 300px;
+            display: flex;
+            font-family: inherit;
+            height: fit-content;
+        }
+        form > div > div > input {
+            width: 300px;
+            font-size: medium;
+            height: 15px;
+            padding: 5px;
+        }
+
+        .top-buttons {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .button {
+            margin: 5px;
+            padding: 5px;
+            background: #2c8dcc;
+            border-style: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: .1s;
+        }
+
+        .button:hover {
+            background: #1e5ecc;
+        }
+        .hidden {
+            display: none;
+            background: transparent;
+            color: transparent;
+            visibility: hidden;
+            overflow: hidden;
+        }
+        .innerButtons {
+            display: flex;
+            flex-direction: row;
+            position: sticky;
+            bottom: -10px;
+            width: 100%;
+            justify-content: center;
+            background: #ececec;
+        }
+        .active {
+            transform: scale(1.1);
+        }
+        #copy_html {
+            display: flex;
+            position: fixed;
+            right: 10px;
+            top: 10px;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+
+    </style>
+    <title>ШАБЛОНИЗАТОР EMAIL</title>
+    <!--  / PLUGIN CSS  -->
+</head>
+
+<body>
+<!-- PLUGIN HTML -->
+<div id="plugin">
+    <div class="top-buttons">
+        <a href="#sect-0"><button id="heading" class="heading-button button">Оглавление</button></a>
+        <a href="#sect-1"><button id="0_sect" class="section-button button">Секция 1</button></a>
+        <a href="#sect-2"><button id="1_sect" class="section-button button">Секция 2</button></a>
+        <a href="#sect-3"><button id="2_sect" class="section-button button">Секция 3</button></a>
+        <a href="#sect-4"><button id="3_sect" class="section-button button">Секция 4</button></a>
+        <a href="#sect-5"><button id="4_sect" class="section-button button">Секция 5</button></a>
+        <a href="#sect-6"><button id="5_sect" class="section-button button">Секция 6</button></a>
+        <a href="#sect-7"><button id="6_sect" class="section-button button">Секция 7</button></a>
+    </div>
+    <form id="plugin_form"></form>
+    <button id="copy_html" class="button">Копировать HTML рассылки</button>
+</div>
+<!-- / PLUGIN  HTML -->
+
+
+<!-- TABLE ROOT WRAPPER -->
+<div id="table_root">
+    <p>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    </p>
+
+    <p>
+        <meta content="width=320, target-densitydpi=device-dpi" name="viewport">
+        <style type="text/css">
+            /* Client-specific Styles */
+            #outlook a {
+                padding: 0;
+            }
+
+            /* Force Outlook to provide a "view in browser" menu link. */
+            body {
+                width: 100% !important;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            /* Prevent Webkit and Windows Mobile platforms from changing default font sizes, while not breaking desktop design. */
+            .ExternalClass {
+                width: 100%;
+            }
+
+            /* Force Hotmail to display emails at full width */
+            .ExternalClass,
+            .ExternalClass p,
+            .ExternalClass span,
+            .ExternalClass font,
+            .ExternalClass td,
+            .ExternalClass div {
+                line-height: 100%;
+            }
+
+            /* Force Hotmail to display normal line spacing.*/
+            #backgroundTable {
+                margin: 0;
+                padding: 0;
+                width: 100% !important;
+                line-height: 100% !important;
+            }
+
+            img {
+                outline: none;
+                text-decoration: none;
+                border: none;
+                -ms-interpolation-mode: bicubic;
+            }
+
+            a img {
+                border: none;
+            }
+
+            .image_fix {
+                display: block;
+            }
+
+            p {
+                margin: 0px 0px !important;
+            }
+
+            table td {
+                border-collapse: collapse;
+            }
+
+            table {
+                border-collapse: collapse;
+                mso-table-lspace: 0pt;
+                mso-table-rspace: 0pt;
+            }
+
+            /*STYLES*/
+        </style>
+    </p>
+    <table bgcolor="#fafafa" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+            <td align="center" bgcolor="#fafafa"
+                style="font-family: Arial, Verdana, Helvetica, sans-serif; -webkit-text-size-adjust: none; -ms-text-size-adjust: none;"
+                width="100%">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" class="devicewidth" width="600">
+                                <tbody>
+                                <tr>
+                                    <td height="45" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="middle" width="100%">
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="header-column" style="table-layout: fixed;" valign="middle"
+                                               width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td valign="middle">
+																	<span style="color: #999999; font-size: 12px; font-family: Arial; font-weight: 400; line-height: 14px;">по
+																		Украине </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="middle">
+                                                    <a href="tel:+380800504999"
+                                                       style="color: #000000; text-decoration: none;"><span
+                                                            style="color: #000000; font-size: 18px; font-family: Arial; font-weight: 400; line-height: 18px;">(044)
+																			290-76-87</span> </a></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="header-divider" style="table-layout: fixed;" valign="middle"
+                                               width="1%">
+                                            <tbody>
+                                            <tr>
+                                                <td height="20" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="header-column" style="table-layout: fixed;" valign="middle"
+                                               width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td align="center" valign="middle">
+                                                    <a href="https://www.aks.ua/?utm_source=mobile&utm_medium=email"
+                                                       target="_blank">
+                                                        <img alt="aks" height="35"
+                                                             src="https://www.aks.ua/userfiles/images/logo(50).png"
+                                                             width="142"></a></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="header-divider" style="table-layout: fixed;" valign="middle"
+                                               width="1%">
+                                            <tbody>
+                                            <tr>
+                                                <td height="20" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="right" border="0" cellpadding="0" cellspacing="0"
+                                               class="header-right" style="table-layout: fixed;" valign="middle"
+                                               width="61px">
+                                            <tbody>
+                                            <tr>
+                                                <td valign="middle">
+                                                     
+                                                </td>
+                                                <td valign="middle" width="33">
+                                                    <a href="https://www.facebook.com/aksmarket/" target="_blank"><img
+                                                            alt="" src="https://www.aks.ua/userfiles/images/web1.png"
+                                                            style="width: 28px; height: 28px;"> </a></td>
+                                                <td valign="middle" width="28">
+                                                    <a href="https://www.instagram.com/aks.ua/" target="_blank"><img
+                                                            alt="" src="https://www.aks.ua/userfiles/images/web2.png"
+                                                            style="width: 28px; height: 28px;"> </a></td>
+                                                <td valign="middle">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="33" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+                                <tr id="top_nav">
+                                    <td valign="middle" width="100%">
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="header-nav1" style="table-layout: fixed; text-align: center;"
+                                               valign="middle" width="20%">
+                                            <tbody>
+                                            <tr>
+                                                <td valign="middle">
+                                                    <span style="color: rgb(44, 141, 204); text-decoration: none; font-size: 16px; font-family: Arial; font-weight: 400; line-height: 30px;"><a
+                                                            href="https://www.aks.ua/catalog/telefony-aksessuary/?utm_source=mobile&amp;utm_medium=email"
+                                                            style="color: #2c8dcc; text-decoration: none;"
+                                                            target="_blank">Аксессуары</a></span>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="header-nav2" style="table-layout: fixed; text-align: center;"
+                                               target="_blank" valign="middle" width="20%">
+                                            <tbody>
+                                            <tr>
+                                                <td valign="middle">
+                                                    <span style="color: rgb(44, 141, 204); text-decoration: none; font-size: 16px; font-family: Arial; font-weight: 400; line-height: 30px;"><a
+                                                            href="https://www.aks.ua/catalog/zapchasti-k-mobilnym-ustroistvam/?utm_source=mobile&utm_medium=email"
+                                                            style="color: #2c8dcc; text-decoration: none;"
+                                                            target="_blank">Запчасти</a></span></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="header-nav3" style="table-layout: fixed; text-align: center;"
+                                               valign="middle" width="20%">
+                                            <tbody>
+                                            <tr>
+                                                <td valign="middle">
+                                                    <span style="color: rgb(44, 141, 204); text-decoration: none; font-size: 16px; font-family: Arial; font-weight: 400; line-height: 30px;"><a
+                                                            href="https://www.aks.ua/catalog/naushniki/akcii/na-8-marta?utm_source=mobile&utm_medium=email"
+                                                            style="color: #2c8dcc; text-decoration: none;"
+                                                            target="_blank">Наушники</a></span></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="header-nav4" style="table-layout: fixed; text-align: center;"
+                                               valign="middle" width="20%">
+                                            <tbody>
+                                            <tr>
+                                                <td valign="middle">
+                                                    <span style="color: rgb(44, 141, 204); text-decoration: none; font-size: 16px; font-family: Arial; font-weight: 400; line-height: 30px;"><a
+                                                            target="_blank"
+                                                            style="color: #2c8dcc; text-decoration: none;"
+                                                            href="https://www.aks.ua/catalog/dopakkym/?utm_source=mobile&utm_medium=email">Power Bank</a></span>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="header-nav5" style="table-layout: fixed; text-align: center;"
+                                               valign="middle" width="20%">
+                                            <tbody>
+                                            <tr>
+                                                <td valign="middle">
+                                                    <span style="color: rgb(44, 141, 204); text-decoration: none; font-size: 16px; font-family: Arial; font-weight: 400; line-height: 30px;"><a
+                                                            href="https://www.aks.ua/remont/?utm_source=mobile&utm_medium=email"
+                                                            style="color: #2c8dcc; text-decoration: none;"
+                                                            target="_blank">Ремонт</a></span></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="34" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+                                <tr id="top_banner">
+                                    <td align="left" valign="top" width="100%">
+                                        <img alt="Скидки на 8 марта"
+                                             src="https://www.aks.ua/userfiles/images/1(1639).jpg" style="width: 100%;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="37" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+                                <tr id="top_heading">
+                                    <td align="center" valign="top" width="100%">
+                                        <span style="color: #000; font-size: 25px; font-family: Arial; font-weight: 400; line-height: 30px;">Идеи для подарков на 8 марта по выгодным ценам!</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td height="41" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+
+
+                                <tr id="sect-1" class="section_start banner">
+                                    <td align="left" valign="top" width="100%">
+                                        <a href="https://www.aks.ua/item/view/261279/izmelchitel-lamart-ruber-lt7021.html?utm_source=mobile&utm_medium=email"
+                                           target="_blank"><img alt="Мельница для специй Lamart 199грн"
+                                                                src="https://www.aks.ua/userfiles/images/7(308).jpg"
+                                                                style="width: 600px; height: 185px;"></a></td>
+                                </tr>
+                                <tr>
+                                    <td height="15" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="middle" width="100%">
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/456031/termokruzhka-con-brio-sv-378-450ml-pink.html?utm_source=mobile&utm_medium=email"
+                                                       target="_blank"><img alt="Термокружка Con Brio СВ-378 450ml Pink"
+                                                                            src="https://www.aks.ua/userfiles/images/termokruzhka_con_brio_sv-378_-_450ml-71243035374022_small11%20-%20%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%9A%D0%BE%D0%B2%D0%B0%D0%BB%D0%B5%D0%BD%D0%BA%D0%BE.jpg"
+                                                                            style="width: 160px; height: 161px;"> </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/456031/termokruzhka-con-brio-sv-378-450ml-pink.html?utm_source=mobile&utm_medium=email"
+                                                       style="color: #2c8dcc; text-decoration: none;"
+                                                       target="_blank"><span
+                                                            style="color: #2c8dcc; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">Термокружка Con Brio СВ-378 450ml Pink</span>
+                                                    </a></td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">172
+																						грн</span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">239
+																						грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/456031/termokruzhka-con-brio-sv-378-450ml-pink.html?utm_source=mobile&utm_medium=email"
+                                                                   target="_blank"><img alt="" height="36"
+                                                                                        src="https://www.aks.ua/userfiles/images/button.png"
+                                                                                        width="36"> </a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="product-divider" style="table-layout: fixed;" valign="middle"
+                                               width="2%">
+                                            <tbody>
+                                            <tr>
+                                                <td height="15" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/353582/con-brio-sv-343-rozovyi.html?utm_source=mobile&utm_medium=email"
+                                                       target="_blank"><img alt="Термос Con Brio СВ-343 350мл Розовый"
+                                                                            src="https://www.aks.ua/userfiles/images/23647884_images_15847151650%20-%20%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%9A%D0%BE%D0%B2%D0%B0%D0%BB%D0%B5%D0%BD%D0%BA%D0%BE.jpg"
+                                                                            style="width: 160px; height: 161px;"> </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/353582/con-brio-sv-343-rozovyi.html?utm_source=mobile&utm_medium=email"
+                                                       style="color: #2c8dcc; text-decoration: none;"
+                                                       target="_blank"><span
+                                                            style="color: #2c8dcc; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">Термос Con Brio СВ-343 350мл Розовый</span>
+                                                    </a></td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">160
+																						грн </span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">229
+																						грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/353582/con-brio-sv-343-rozovyi.html?utm_source=mobile&utm_medium=email"
+                                                                   target="_blank"><img alt="" height="36"
+                                                                                        src="https://www.aks.ua/userfiles/images/button.png"
+                                                                                        width="36"> </a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="product-divider" style="table-layout: fixed;" valign="middle"
+                                               width="2%">
+                                            <tbody>
+                                            <tr>
+                                                <td height="15" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/455963/termokruzhka-con-brio-sv-379-350ml-red.html?utm_source=mobile&utm_medium=email"
+                                                       target="_blank"><img alt="Термокружка Con Brio СВ-379 350ml Red"
+                                                                            src="https://www.aks.ua/userfiles/images/termokruzhka_con_brio_sv-379_-_350ml80994-22704964594453_small11%20-%20%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%9A%D0%BE%D0%B2%D0%B0%D0%BB%D0%B5%D0%BD%D0%BA%D0%BE.jpg"
+                                                                            style="width: 160px; height: 161px;"> </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/455963/termokruzhka-con-brio-sv-379-350ml-red.html?utm_source=mobile&utm_medium=email"
+                                                       style="color: #2c8dcc; text-decoration: none;"
+                                                       target="_blank"><span
+                                                            style="color: #2c8dcc; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">Термокружка Con Brio СВ-379 350ml Red</span>
+                                                    </a></td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">142
+																						грн </span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">179
+																						грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/455963/termokruzhka-con-brio-sv-379-350ml-red.html?utm_source=mobile&utm_medium=email"
+                                                                   target="_blank"><img alt="" height="36"
+                                                                                        src="https://www.aks.ua/userfiles/images/button.png"
+                                                                                        width="36"> </a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="15" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" valign="top" width="100%">
+                                        <a href="https://www.aks.ua/catalog/termos/?utm_source=mobile&utm_medium=email"
+                                           style="color: #fff; text-decoration: none;" target="_blank"><span
+                                                bgcolor="#5da24f"
+                                                style="display: block; width: 100%; color: #fff; font-size: 16px; font-family: Arial; font-weight: 400; text-align: center; line-height: 54px; background: #5da24f; border-radius: 5px;"
+                                                width="100%">Смотреть больше предложений </span> </a></td>
+                                </tr>
+                                <tr class="section_end gutter">
+                                    <td height="41" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+
+
+                                <tr id="sect-2" class="section_start banner">
+                                    <td align="left" valign="top" width="100%">
+                                        <a href="https://www.aks.ua/catalog/mobilnye-telefony/klass/akcionnoe-predlozhenie/?utm_source=mobile&utm_medium=email"
+                                           target="_blank"><img alt="Снижены цены на топовые смартфоны"
+                                                                src="https://www.aks.ua/userfiles/images/10(133).jpg"
+                                                                style="width: 600px; height: 185px;"> </a></td>
+                                </tr>
+                                <tr>
+                                    <td height="15" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="middle" width="100%">
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/413763/mobilnyi-telefon-samsung-a10-2019-2-32gb-sm-a105fzrg-red.html?utm_source=mobile&utm_medium=email"
+                                                       target="_blank"><img alt="Samsung A10 2019 2/32GB Red"
+                                                                            src="https://www.aks.ua/userfiles/images/samsung%20a10%20red%20-1%20-%20%D0%9E%D0%BB%D0%B5%D0%B3%20%D0%A0%D1%8B%D0%BF%D0%B8%D0%BA.jpg"
+                                                                            style="width: 160px; height: 161px;"> </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/413763/mobilnyi-telefon-samsung-a10-2019-2-32gb-sm-a105fzrg-red.html?utm_source=mobile&utm_medium=email"
+                                                       style="color: #2c8dcc; text-decoration: none;"
+                                                       target="_blank"><span
+                                                            style="color: #2c8dcc; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">Samsung A10 2019 2/32GB (SM-A105FZRG) Red</span>
+                                                    </a></td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">3099
+																						грн </span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">3399
+																						грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/413763/mobilnyi-telefon-samsung-a10-2019-2-32gb-sm-a105fzrg-red.html?utm_source=mobile&utm_medium=email"
+                                                                   target="_blank"><img alt="" height="36"
+                                                                                        src="https://www.aks.ua/userfiles/images/button.png"
+                                                                                        width="36"> </a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="product-divider" style="table-layout: fixed;" valign="middle"
+                                               width="2%">
+                                            <tbody>
+                                            <tr>
+                                                <td height="15" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/446134/xiaomi-redmi-note-8-pro-6-64gb-global-version-12mes-green.html?utm_source=mobile&utm_medium=email"
+                                                       target="_blank"><img
+                                                            alt="Xiaomi Redmi Note 8 Pro 6/64GB Global Version Green"
+                                                            src="https://www.aks.ua/userfiles/images/note%208%20pro%20green%201%20-%20%D0%9E%D0%BB%D0%B5%D0%B3%20%D0%A0%D1%8B%D0%BF%D0%B8%D0%BA.jpg"
+                                                            style="width: 160px; height: 161px;"> </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/446134/xiaomi-redmi-note-8-pro-6-64gb-global-version-12mes-green.html?utm_source=mobile&utm_medium=email"
+                                                       style="color: #2c8dcc; text-decoration: none;"
+                                                       target="_blank"><span
+                                                            style="color: #2c8dcc; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">Xiaomi Redmi Note 8 Pro 6/64GB Global Version (12мес.) Green</span>
+                                                    </a></td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">5999
+																						грн </span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">6499
+																						грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/446134/xiaomi-redmi-note-8-pro-6-64gb-global-version-12mes-green.html?utm_source=mobile&utm_medium=email"
+                                                                   target="_blank"><img alt="" height="36"
+                                                                                        src="https://www.aks.ua/userfiles/images/button.png"
+                                                                                        width="36"> </a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="product-divider" style="table-layout: fixed;" valign="middle"
+                                               width="2%">
+                                            <tbody>
+                                            <tr>
+                                                <td height="15" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/459020/xiaomi-mi-note-10-6-128gb-ua-white.html?utm_source=mobile&utm_medium=email"
+                                                       target="_blank"><img alt="Xiaomi Mi Note 10 6/128GB White"
+                                                                            src="https://www.aks.ua/userfiles/images/mi%20note%2010%20white%20-1%20-%20%D0%9E%D0%BB%D0%B5%D0%B3%20%D0%A0%D1%8B%D0%BF%D0%B8%D0%BA.jpg"
+                                                                            style="width: 160px; height: 161px;"> </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/459020/xiaomi-mi-note-10-6-128gb-ua-white.html?utm_source=mobile&utm_medium=email"
+                                                       style="color: #2c8dcc; text-decoration: none;"
+                                                       target="_blank"><span
+                                                            style="color: #2c8dcc; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">Xiaomi Mi Note 10 6/128GB White</span>
+                                                    </a></td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">11999
+																						грн </span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">12499
+																						грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/459020/xiaomi-mi-note-10-6-128gb-ua-white.html?utm_source=mobile&utm_medium=email"
+                                                                   target="_blank"><img alt="" height="36"
+                                                                                        src="https://www.aks.ua/userfiles/images/button.png"
+                                                                                        width="36"> </a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="15" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" valign="top" width="100%">
+                                        <a href="https://www.aks.ua/catalog/mobilnye-telefony/klass/akcionnoe-predlozhenie/?utm_source=mobile&utm_medium=email"
+                                           style="color: #fff; text-decoration: none;" target="_blank"><span
+                                                bgcolor="#5da24f"
+                                                style="display: block; width: 100%; color: #fff; font-size: 16px; font-family: Arial; font-weight: 400; text-align: center; line-height: 54px; background: #5da24f; border-radius: 5px;"
+                                                width="100%">Смотреть больше предложений </span> </a></td>
+                                </tr>
+                                <tr class="section_end gutter">
+                                    <td height="37" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+
+
+                                <tr id="sect-3" class="section_start banner">
+                                    <td align="left" valign="top" width="100%">
+                                        <a href="https://www.aks.ua/catalog/zashitnue-stekla-dla-mobilnogo-telefona/brand/powermax/akciya/rasprodazha/?utm_source=mobile&utm_medium=email"
+                                           target="_blank"><img style="width: 600px; height: 185px;"
+                                                                src="https://www.aks.ua/userfiles/images/9(180).jpg"
+                                                                alt="Широкий выбор стекол + бесплатная поклейка"></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="15" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="middle" width="100%">
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/447455/zashitnoe-steklo-powermax-3d-crystalshield-apple-iphone-xs-max-iphone-11-pro-max-black-pwrmxcriphxsmb.html?utm_source=mobile&utm_medium=email"
+                                                       target="_blank"><img
+                                                            alt="Защитное стекло Powermax 3D CrystalShield Apple iPhone XS Max, iPhone 11 Pro Max Black"
+                                                            src="https://www.aks.ua/userfiles/images/993a1af24ba7362bd3ca72f88ea954cb_large_nw%20-%20%D0%90%D1%80%D1%82%D1%83%D1%80%20%D0%9A%D1%83%D1%88%D0%BD%D0%B8%D1%80.jpg"
+                                                            style="width: 160px; height: 161px;"> </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/447455/zashitnoe-steklo-powermax-3d-crystalshield-apple-iphone-xs-max-iphone-11-pro-max-black-pwrmxcriphxsmb.html?utm_source=mobile&utm_medium=email"
+                                                       style="color: #2c8dcc; text-decoration: none;"
+                                                       target="_blank"><span
+                                                            style="color: #2c8dcc; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">Защитное стекло Powermax 3D CrystalShield Apple iPhone XS Max, iPhone 11 Pro Max Black (PWRMXCRIPHXSMB)</span>
+                                                    </a></td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">199
+																						грн</span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">299
+																						грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/447455/zashitnoe-steklo-powermax-3d-crystalshield-apple-iphone-xs-max-iphone-11-pro-max-black-pwrmxcriphxsmb.html?utm_source=mobile&utm_medium=email"
+                                                                   target="_blank"><img alt="" height="36"
+                                                                                        src="https://www.aks.ua/userfiles/images/button.png"
+                                                                                        width="36"> </a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="product-divider" style="table-layout: fixed;" valign="middle"
+                                               width="2%">
+                                            <tbody>
+                                            <tr>
+                                                <td height="15" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/461273/zashitnoe-steklo-powermax-3d-premium-samsung-a515-galaxy-a51-black-pwrmx3dsga51b.html?utm_source=mobile&utm_medium=email"
+                                                       target="_blank"><img
+                                                            alt="Защитное стекло Powermax 3D Premium Samsung A515 Galaxy A51 Black"
+                                                            src="https://www.aks.ua/userfiles/images/dedf4a31b25886d2273c0a39e5d951bc_large_nw%20-%20%D0%90%D1%80%D1%82%D1%83%D1%80%20%D0%9A%D1%83%D1%88%D0%BD%D0%B8%D1%80.jpg"
+                                                            style="width: 160px; height: 161px;"> </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/461273/zashitnoe-steklo-powermax-3d-premium-samsung-a515-galaxy-a51-black-pwrmx3dsga51b.htmll?utm_source=mobile&utm_medium=email"
+                                                       style="color: #2c8dcc; text-decoration: none;"
+                                                       target="_blank"><span
+                                                            style="color: #2c8dcc; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">Защитное стекло Powermax 3D Premium Samsung A515 Galaxy A51 Black (PWRMX3DSGA51B)</span>
+                                                    </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">229
+																						грн </span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">269
+																						грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/461273/zashitnoe-steklo-powermax-3d-premium-samsung-a515-galaxy-a51-black-pwrmx3dsga51b.html?utm_source=mobile&utm_medium=email"
+                                                                   target="_blank"><img alt="" height="36"
+                                                                                        src="https://www.aks.ua/userfiles/images/button.png"
+                                                                                        width="36"> </a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="product-divider" style="table-layout: fixed;" valign="middle"
+                                               width="2%">
+                                            <tbody>
+                                            <tr>
+                                                <td height="15" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/447566/zashitnoe-steklo-powermax-3d-crystalshield-xiaomi-redmi-note-8-black-pwrmxcrxrn8b.html?utm_source=mobile&utm_medium=email"
+                                                       target="_blank"><img
+                                                            alt="Защитное стекло Powermax 3D CrystalShield Xiaomi Redmi Note 8 Black"
+                                                            src="https://www.aks.ua/userfiles/images/9ba386a53867525f652d4cbfcc743d7a_large_nw%20-%20%D0%90%D1%80%D1%82%D1%83%D1%80%20%D0%9A%D1%83%D1%88%D0%BD%D0%B8%D1%80.jpg"
+                                                            style="width: 160px; height: 161px;"> </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/447566/zashitnoe-steklo-powermax-3d-crystalshield-xiaomi-redmi-note-8-black-pwrmxcrxrn8b.html?utm_source=mobile&utm_medium=email"
+                                                       style="color: #2c8dcc; text-decoration: none;"
+                                                       target="_blank"><span
+                                                            style="color: #2c8dcc; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">Защитное стекло Powermax 3D CrystalShield Xiaomi Redmi Note 8 Black (PWRMXCRXRN8B)</span>
+                                                    </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">199
+																						грн </span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">299
+																						грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/447566/zashitnoe-steklo-powermax-3d-crystalshield-xiaomi-redmi-note-8-black-pwrmxcrxrn8b.html?utm_source=mobile&utm_medium=email"
+                                                                   target="_blank"><img alt="" height="36"
+                                                                                        src="https://www.aks.ua/userfiles/images/button.png"
+                                                                                        width="36"> </a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="15" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" valign="top" width="100%">
+                                        <a href="https://www.aks.ua/catalog/zashitnue-stekla-dla-mobilnogo-telefona/brand/powermax/akciya/rasprodazha/?utm_source=mobile&utm_medium=email"
+                                           style="color: #fff; text-decoration: none;" target="_blank"><span
+                                                bgcolor="#5da24f"
+                                                style="display: block; width: 100%; color: #fff; font-size: 16px; font-family: Arial; font-weight: 400; text-align: center; line-height: 54px; background: #5da24f; border-radius: 5px;"
+                                                width="100%">Смотреть больше предложений </span> </a></td>
+                                </tr>
+
+                                <tr class="section_end gutter">
+                                    <td height="41" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+
+
+                                <tr id="sect-4" class="section_start banner">
+                                    <td align="left" valign="top" width="100%">
+                                        <a href="
+	https://www.aks.ua/catalog/chehly-dlya-mobilnyh-telefonov/brand/baseus/brend-telefona/apple-iphone/akciya/rasprodazha?utm_source=mobile&utm_medium=email"
+                                           target="_blank"><img alt="Супер-скидка на чехлы Baseus"
+                                                                src="https://www.aks.ua/userfiles/images/3(705).jpg"
+                                                                style="width: 600px; height: 185px;"></a></td>
+                                </tr>
+                                <tr>
+                                    <td height="15" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="middle" width="100%">
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/469470/chehol-baseus-safety-airbags-apple-iphone-xr-black-arapiph61-sf01.html?utm_source=mobile&utm_medium=email"
+                                                       target="_blank"><img
+                                                            alt="Чехол Baseus Safety Airbags Apple iPhone XR Black"
+                                                            src="https://www.aks.ua/userfiles/images/599d44619e4671a0bbbc1815528c1560_large_nw%20-%20%D0%90%D1%80%D1%82%D1%83%D1%80%20%D0%9A%D1%83%D1%88%D0%BD%D0%B8%D1%80.jpg"
+                                                            style="width: 160px; height: 161px;"> </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/469470/chehol-baseus-safety-airbags-apple-iphone-xr-black-arapiph61-sf01.html?utm_source=mobile&utm_medium=email"
+                                                       style="color: #2c8dcc; text-decoration: none;"
+                                                       target="_blank"><span
+                                                            style="color: #2c8dcc; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">Чехол Baseus Safety Airbags Apple iPhone XR Black (ARAPIPH61-SF01)</span>
+                                                    </a></td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">99
+																						грн  </span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">299
+																						грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/469470/chehol-baseus-safety-airbags-apple-iphone-xr-black-arapiph61-sf01.html?utm_source=mobile&utm_medium=email"
+                                                                   target="_blank"><img alt="" height="36"
+                                                                                        src="https://www.aks.ua/userfiles/images/button.png"
+                                                                                        width="36"> </a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="product-divider" style="table-layout: fixed;" valign="middle"
+                                               width="2%">
+                                            <tbody>
+                                            <tr>
+                                                <td height="15" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/469484/chehol-baseus-bv-case-apple-iphone-xs-balck-wiapiph58-bv01.html?utm_source=mobile&utm_medium=email"
+                                                       target="_blank"><img
+                                                            alt="Чехол Baseus BV Case Apple iPhone XS Black"
+                                                            src="https://www.aks.ua/userfiles/images/b2c29dd150aa02b13dddc9a956271980_large_nw%20-%20%D0%90%D1%80%D1%82%D1%83%D1%80%20%D0%9A%D1%83%D1%88%D0%BD%D0%B8%D1%80.jpg"
+                                                            style="width: 160px; height: 161px;"> </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/469484/chehol-baseus-bv-case-apple-iphone-xs-balck-wiapiph58-bv01.html?utm_source=mobile&utm_medium=email"
+                                                       style="color: #2c8dcc; text-decoration: none;"
+                                                       target="_blank"><span
+                                                            style="color: #2c8dcc; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">Чехол Baseus BV Case Apple iPhone XS Black (WIAPIPH58-BV01)</span>
+                                                    </a></td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">99
+																						грн  </span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">299
+																						грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/469484/chehol-baseus-bv-case-apple-iphone-xs-balck-wiapiph58-bv01.html?utm_source=mobile&utm_medium=email"
+                                                                   target="_blank"><img alt="" height="36"
+                                                                                        src="https://www.aks.ua/userfiles/images/button.png"
+                                                                                        width="36"> </a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="product-divider" style="table-layout: fixed;" valign="middle"
+                                               width="2%">
+                                            <tbody>
+                                            <tr>
+                                                <td height="15" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/469518/chehol-baseus-see-through-apple-iphone-xs-max-pink-wiapiph65-ys04.html?utm_source=mobile&utm_medium=email"
+                                                       target="_blank"><img
+                                                            alt="Чехол Baseus See-through Apple iPhone XS Max Pink"
+                                                            src="https://www.aks.ua/userfiles/images/06a14b2fcae78557bbd79fac8886f583_large_nw%20-%20%D0%90%D1%80%D1%82%D1%83%D1%80%20%D0%9A%D1%83%D1%88%D0%BD%D0%B8%D1%80.jpg"
+                                                            style="width: 160px; height: 161px;"> </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <a target="_blank" style="color: #2c8dcc; text-decoration: none;"
+                                                       href="https://www.aks.ua/item/view/469518/chehol-baseus-see-through-apple-iphone-xs-max-pink-wiapiph65-ys04.html?utm_source=mobile&utm_medium=email"><span
+                                                            style="color: #2c8dcc; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">Чехол Baseus See-through Apple iPhone XS Max Pink (WIAPIPH65-YS04)</span>
+                                                    </a></td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">123
+																						грн </span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">449
+																						грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/469518/chehol-baseus-see-through-apple-iphone-xs-max-pink-wiapiph65-ys04.html?utm_source=mobile&utm_medium=email"
+                                                                   target="_blank"><img alt="" height="36"
+                                                                                        src="https://www.aks.ua/userfiles/images/button.png"
+                                                                                        width="36"> </a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="15" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" valign="top" width="100%">
+                                        <a href="
+	https://www.aks.ua/catalog/chehly-dlya-mobilnyh-telefonov/brand/baseus/brend-telefona/apple-iphone/akciya/rasprodazha?utm_source=mobile&utm_medium=email"
+                                           style="color: #fff; text-decoration: none;" target="_blank"><span
+                                                bgcolor="#5da24f"
+                                                style="display: block; width: 100%; color: #fff; font-size: 16px; font-family: Arial; font-weight: 400; text-align: center; line-height: 54px; background: #5da24f; border-radius: 5px;"
+                                                width="100%">Смотреть больше предложений </span> </a></td>
+                                </tr>
+                                <tr class="section_end gutter">
+                                    <td height="41" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+
+
+                                <tr id="sect-5" class="section_start banner">
+                                    <td align="left" valign="top" width="100%">
+                                        <a href="https://www.aks.ua/catalog/naushniki/akcii/na-8-marta?utm_source=mobile&utm_medium=email"
+                                           target="_blank"><img alt="Лучшие цены на популярные наушники"
+                                                                src="https://www.aks.ua/userfiles/images/5(500).jpg"
+                                                                style="width: 600px; height: 185px;"></a></td>
+                                </tr>
+                                <tr>
+                                    <td height="15" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="middle" width="100%">
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/414829/naushniki-garnitura-apple-airpods-with-charging-case-mv7n2.html?utm_source=mobile&utm_medium=email"
+                                                       target="_blank"><img
+                                                            alt="Гарнитура для телефона Apple AirPods 2 with Charging Case"
+                                                            src="https://www.aks.ua/userfiles/images/102719220_images_12865856562%20-%20%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9%20%D0%A1%D0%BC%D0%BE%D0%BB%D1%8F%D0%BD%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2.jpg"
+                                                            style="width: 160px; height: 161px;"> </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/414829/naushniki-garnitura-apple-airpods-with-charging-case-mv7n2.html?utm_source=mobile&utm_medium=email"
+                                                       style="color: #2c8dcc; text-decoration: none;"
+                                                       target="_blank"><span
+                                                            style="color: #2c8dcc; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">Гарнитура для телефона Apple AirPods 2 with Charging Case (MV7N2)</span>
+                                                    </a></td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">3899
+																						грн</span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">4399
+																						грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/414829/naushniki-garnitura-apple-airpods-with-charging-case-mv7n2.html?utm_source=mobile&utm_medium=email"
+                                                                   target="_blank"><img alt="" height="36"
+                                                                                        src="https://www.aks.ua/userfiles/images/button.png"
+                                                                                        width="36"> </a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="product-divider" style="table-layout: fixed;" valign="middle"
+                                               width="2%">
+                                            <tbody>
+                                            <tr>
+                                                <td height="15" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/398622/naushniki-garnitura-xiaomi-mi-airdots-pro-white.html
+	?utm_source=mobile&utm_medium=email" target="_blank"><img
+                                                            alt="Гарнитура для телефона Xiaomi Air Mi True Wireless Earphones White"
+                                                            src="https://www.aks.ua/userfiles/images/1884416095%20-%20%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9%20%D0%A1%D0%BC%D0%BE%D0%BB%D1%8F%D0%BD%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2.jpg"
+                                                            style="width: 160px; height: 161px;"> </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/398622/naushniki-garnitura-xiaomi-mi-airdots-pro-white.html
+	?utm_source=mobile&utm_medium=email" style="color: #2c8dcc; text-decoration: none;" target="_blank"><span
+                                                            style="color: #2c8dcc; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">Гарнитура для телефона Xiaomi Air Mi True Wireless Earphones White</span>
+                                                    </a></td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">1289
+																						грн </span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">1399
+																						грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/398622/naushniki-garnitura-xiaomi-mi-airdots-pro-white.html?utm_source=mobile&utm_medium=email"
+                                                                   target="_blank"><img alt="" height="36"
+                                                                                        src="https://www.aks.ua/userfiles/images/button.png"
+                                                                                        width="36"> </a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="product-divider" style="table-layout: fixed;" valign="middle"
+                                               width="2%">
+                                            <tbody>
+                                            <tr>
+                                                <td height="15" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="
+	https://www.aks.ua/item/view/459272/qcy-t5-black.html?utm_source=mobile&utm_medium=email" target="_blank"><img
+                                                            alt="Гарнитура для телефона QCY T5 Black"
+                                                            src="https://www.aks.ua/userfiles/images/xiaomi_qt_qcy_t5bk_images_14947200718%20-%20%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9%20%D0%A1%D0%BC%D0%BE%D0%BB%D1%8F%D0%BD%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2.jpg"
+                                                            style="width: 160px; height: 161px;"> </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/459272/qcy-t5-black.html?utm_source=mobile&utm_medium=email"
+                                                       style="color: #2c8dcc; text-decoration: none;"
+                                                       target="_blank"><span
+                                                            style="color: #2c8dcc; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">Гарнитура для телефона QCY T5 Black</span>
+                                                    </a></td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">799
+																						грн </span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">999
+																						грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/459272/qcy-t5-black.html?utm_source=mobile&utm_medium=email"
+                                                                   target="_blank"><img alt="" height="36"
+                                                                                        src="https://www.aks.ua/userfiles/images/button.png"
+                                                                                        width="36"> </a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="15" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" valign="top" width="100%">
+                                        <a href="https://www.aks.ua/catalog/naushniki/akcii/na-8-marta?utm_source=mobile&utm_medium=email"
+                                           style="color: #fff; text-decoration: none;" target="_blank"><span
+                                                bgcolor="#5da24f"
+                                                style="display: block; width: 100%; color: #fff; font-size: 16px; font-family: Arial; font-weight: 400; text-align: center; line-height: 54px; background: #5da24f; border-radius: 5px;"
+                                                width="100%">Смотреть больше предложений </span> </a></td>
+                                </tr>
+                                <tr class="section_end gutter">
+                                    <td height="41" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+
+
+                                <tr id="sect-6" class="section_start banner">
+                                    <td align="left" valign="top" width="100%">
+                                        <a href="https://www.aks.ua/catalog/umnye-chasy-smartwatch/predlozheniya/podarok-na-8e-marta?utm_source=mobile&utm_medium=email"
+                                           target="_blank">
+                                            <img alt="Скидка на браслеты, умные часы и ремешки к ним -50%"
+                                                 src="https://www.aks.ua/userfiles/images/2(905).jpg"
+                                                 style="width: 600px; height: 185px;"> </a></td>
+                                </tr>
+                                <tr>
+                                    <td height="15" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="middle" width="100%">
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/400000/fitnes-braslet-xiaomi-mi-smart-band-4-cn-black.html?utm_source=mobile&utm_medium=email"
+                                                       target="_blank">
+                                                        <img alt="Фитнес-браслет Xiaomi Mi Smart Band 4 Black"
+                                                             src="https://www.aks.ua/userfiles/images/Xiaomi-Mi-Band-4-Black-1%20-%20aks%20ua.png"
+                                                             style="width: 160px; height: 161px;"> </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+																	<span style="color: rgb(44, 141, 204); text-decoration: none; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">
+																		<a class="product_name"
+                                                                           href="https://www.aks.ua/item/view/355017/kolonki-akusticheskie-jbl-charge-3-black-jblcharge3blkeu.html?utm_source=mobile&utm_medium=email"
+                                                                           style="color: #2c8dcc; text-decoration: none;"
+                                                                           target="_blank">Фитнес-браслет Xiaomi Mi Smart Band 4 Black</a>
+																	</span>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">699
+																						грн</span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">849
+		грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/400000/fitnes-braslet-xiaomi-mi-smart-band-4-cn-black.html"
+                                                                   target="_blank"><img alt="shoping-cart" height="36"
+                                                                                        src="https://www.aks.ua/userfiles/images/button.png"
+                                                                                        width="36"> </a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="product-divider" style="table-layout: fixed;" valign="middle"
+                                               width="2%">
+                                            <tbody>
+                                            <tr>
+                                                <td height="15" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/324036/fitnes-braslet-xiaomi-huami-amazfit-bip-youth-edition-onyx-black.html?utm_source=mobile&utm_medium=email"
+                                                       target="_blank"><img
+                                                            alt="Фитнес-браслет Xiaomi Amazfit Bip Onyx Black"
+                                                            src="https://www.aks.ua/userfiles/images/Amazfit-Bip-Lite-Rendering-Black-Left%20-%20aks%20ua.png"
+                                                            style="width: 160px; height: 161px;"></a></td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <a class="product_name"
+                                                       href="https://www.aks.ua/item/view/353567/divoom-voombox-power-black.html?utm_source=mobile&utm_medium=email"
+                                                       style="color: #2c8dcc; text-decoration: none;" target="_blank">
+                                                        <span style="color: #2c8dcc; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">Фитнес-браслет Xiaomi Amazfit Bip Onyx Black</span>
+                                                    </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">1499
+																						грн</span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">1799
+																						грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/353567/divoom-voombox-power-black.html?utm_source=mobile&utm_medium=email"
+                                                                   target="_blank" https:="" www.aks.ua="" item=""
+                                                                   view=""><img alt="" height="36"
+                                                                                src="https://www.aks.ua/userfiles/images/button.png"
+                                                                                width="36"></a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="product-divider" style="table-layout: fixed;" valign="middle"
+                                               width="2%">
+                                            <tbody>
+                                            <tr>
+                                                <td height="15" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/354651/sportivnyi-braslet-fitnes-treker-xiaomi-mi-band-3-black.html?utm_source=mobile&utm_medium=email"
+                                                       target="_blank"><img alt="Фитнес-браслет Xiaomi Mi Band 3 Black"
+                                                                            src="https://www.aks.ua/userfiles/images/mi-band-3-overview-04%20-%20aks%20ua.png"
+                                                                            style="width: 160px; height: 161px;"></a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/354651/sportivnyi-braslet-fitnes-treker-xiaomi-mi-band-3-black.html"
+                                                       style="color: #2c8dcc; text-decoration: none;"
+                                                       target="_blank"><span
+                                                            style="color: #2c8dcc; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">Фитнес-браслет Xiaomi Mi Band 3 Black</span>
+                                                    </a></td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">499
+																						грн</span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">699
+																						грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/354651/sportivnyi-braslet-fitnes-treker-xiaomi-mi-band-3-black.html"
+                                                                   target="_blank"><img alt="" height="36"
+                                                                                        src="https://www.aks.ua/userfiles/images/button.png"
+                                                                                        width="36"> </a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="15" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" valign="top" width="100%">
+                                        <a href="https://www.aks.ua/catalog/umnye-chasy-smartwatch/predlozheniya/podarok-na-8e-marta?utm_source=mobile&utm_medium=email"
+                                           style="color: #fff; text-decoration: none;" target="_blank"><span
+                                                bgcolor="#5da24f"
+                                                style="display: block; width: 100%; color: #fff; font-size: 16px; font-family: Arial; font-weight: 400; text-align: center; line-height: 54px; background: #5da24f; border-radius: 5px;"
+                                                width="100%">Смотреть больше предложений</span></a></td>
+                                </tr>
+
+                                <tr class="section_end gutter">
+                                    <td height="41" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+
+
+                                <tr  id="sect-7" class="section_start banner">
+                                    <td align="left" valign="top" width="100%">
+
+                                        <a href="https://www.aks.ua/catalog/dopakkym/akcii/na-8-marta/?utm_source=mobile&utm_medium=email"
+                                           target="_blank"><img style="width: 600px; height: 185px;"
+                                                                src="https://www.aks.ua/userfiles/images/6(349).jpg"
+                                                                alt="Скидка на топовые модели внешних акумуляторов"></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="15" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="middle" width="100%">
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/408616/vneshnii-akkumulyator-xiaomi-2s-10000-mah-silver-vxn4228cn.html
+	?utm_source=mobile&utm_medium=email" target="_blank"><img alt="Внешний аккумулятор Xiaomi Mi 2S 10000 mAh Silver"
+                                                              src="https://www.aks.ua/userfiles/images/xiaomi-mi-power-bank-2i-10000-mah-silver-plm09zm%20-%20%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9%20%D0%A1%D0%BC%D0%BE%D0%BB%D1%8F%D0%BD%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2.jpg"
+                                                              style="width: 160px; height: 161px;"> </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/408616/vneshnii-akkumulyator-xiaomi-2s-10000-mah-silver-vxn4228cn.html
+	?utm_source=mobile&utm_medium=email" style="color: #2c8dcc; text-decoration: none;" target="_blank"><span
+                                                            style="color: #2c8dcc; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">Внешний аккумулятор Xiaomi Mi 2S 10000 mAh Silver</span>
+                                                    </a></td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">479
+																						грн</span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">549
+																						грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/408616/vneshnii-akkumulyator-xiaomi-2s-10000-mah-silver-vxn4228cn.html
+	?utm_source=mobile&utm_medium=email" target="_blank"><img alt="" height="36"
+                                                              src="https://www.aks.ua/userfiles/images/button.png"
+                                                              width="36"> </a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="product-divider" style="table-layout: fixed;" valign="middle"
+                                               width="2%">
+                                            <tbody>
+                                            <tr>
+                                                <td height="15" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/448739/vneshnii-akkumulyator-baseus-mini-s-bracket-wireless-10000-mah-black-red-ppxff10w-19.html?utm_source=mobile&utm_medium=email"
+                                                       target="_blank"><img
+                                                            alt="Внешний аккумулятор Baseus Mini S Bracket Wireless 10000 mAh Black/Red"
+                                                            src="https://www.aks.ua/userfiles/images/183419825_images_16806171152%20-%20%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9%20%D0%A1%D0%BC%D0%BE%D0%BB%D1%8F%D0%BD%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2.jpg"
+                                                            style="width: 160px; height: 161px;"> </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/448739/vneshnii-akkumulyator-baseus-mini-s-bracket-wireless-10000-mah-black-red-ppxff10w-19.html?utm_source=mobile&utm_medium=email"
+                                                       style="color: #2c8dcc; text-decoration: none;"
+                                                       target="_blank"><span
+                                                            style="color: #2c8dcc; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">Внешний аккумулятор Baseus Mini S Bracket Wireless 10000 mAh Black/Red</span>
+                                                    </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">529
+																						грн </span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">599
+																						грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/448739/vneshnii-akkumulyator-baseus-mini-s-bracket-wireless-10000-mah-black-red-ppxff10w-19.html?utm_source=mobile&utm_medium=email"
+                                                                   target="_blank"><img alt="" height="36"
+                                                                                        src="https://www.aks.ua/userfiles/images/button.png"
+                                                                                        width="36"> </a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                               class="product-divider" style="table-layout: fixed;" valign="middle"
+                                               width="2%">
+                                            <tbody>
+                                            <tr>
+                                                <td height="15" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0"
+                                               class="product" style="background: #fff;" valign="middle" width="32%">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" height="35" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td align="center" valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/437116/vneshnii-akkumulyator-xiaomi-wireless-power-bank-wpb15zm-10000mah-white.html?utm_source=mobile&utm_medium=email"
+                                                       target="_blank"><img
+                                                            alt="Внешний аккумулятор Xiaomi Mi Wireless Youth Edition 10000mAh White"
+                                                            src="https://www.aks.ua/userfiles/images/b37456d1-d41e-4092-9306-5ff4c45ab333%20-%20%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9%20%D0%A1%D0%BC%D0%BE%D0%BB%D1%8F%D0%BD%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2.jpg"
+                                                            style="width: 160px; height: 161px;"> </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="18" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <a href="https://www.aks.ua/item/view/437116/vneshnii-akkumulyator-xiaomi-wireless-power-bank-wpb15zm-10000mah-white.html?utm_source=mobile&utm_medium=email"
+                                                       style="color: #2c8dcc; text-decoration: none;"
+                                                       target="_blank"><span
+                                                            style="color: #2c8dcc; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 17px;">Внешний аккумулятор Xiaomi Mi Wireless Youth Edition 10000mAh White (WPB15ZM)</span>
+                                                    </a>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                                <td valign="top" width="70%">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0"
+                                                           style="table-layout: fixed;" valign="middle" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="50%">
+																					<span style="color: #000; font-size: 16px; font-family: Arial; font-weight: 700;">649
+																						грн </span> <span
+                                                                    style="color: #e32;font-size: 12px;font-family: Arial;font-weight: 700;text-decoration-line: line-through;">799
+																						грн</span></td>
+                                                            <td align="right" valign="top" width="50%">
+                                                                <a href="https://www.aks.ua/item/view/437116/vneshnii-akkumulyator-xiaomi-wireless-power-bank-wpb15zm-10000mah-white.html?utm_source=mobile&utm_medium=email"
+                                                                   target="_blank"><img alt="" height="36"
+                                                                                        src="https://www.aks.ua/userfiles/images/button.png"
+                                                                                        width="36"> </a></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" width="15%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="25" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="15" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" valign="top" width="100%">
+                                        <a href="https://www.aks.ua/catalog/dopakkym/akcii/na-8-marta/?utm_source=mobile&utm_medium=email"
+                                           style="color: #fff; text-decoration: none;" target="_blank"><span
+                                                bgcolor="#5da24f"
+                                                style="display: block; width: 100%; color: #fff; font-size: 16px; font-family: Arial; font-weight: 400; text-align: center; line-height: 54px; background: #5da24f; border-radius: 5px;"
+                                                width="100%">Смотреть больше предложений </span> </a></td>
+                                </tr>
+                                <tr class="section_end gutter">
+                                    <td height="41" valign="top" width="100%">
+                                         
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td valign="middle" width="100%">
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" class="footer1"
+                                               valign="middle" width="309px">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" valign="top" width="100%">
+																	<span style="color: #999999; font-size: 18px; font-family: Arial; font-weight: 700; line-height: 25px;">Адреса
+																		магазинов</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td height="12" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" valign="top" width="100%">
+																	<span style="color: #999999; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 25px;">ул.
+																		Ушинского 1, </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" valign="top" width="100%">
+																	<span style="color: #999999; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 25px;">ул.
+																		Довженко 1, </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" valign="top" width="100%">
+																	<span style="color: #999999; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 25px;">пр-т.
+																		Степана Бандеры 8 </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td height="33" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" class="footer2"
+                                               valign="middle" width="214px">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="3" valign="top" width="100%">
+                                                    <span style="color: #999999; font-size: 18px; font-family: Arial; font-weight: 700; line-height: 25px;"> Call-центр</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="12" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" valign="top" width="100%">
+																	<span style="color: #999999; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 25px;">+38
+																		(044) 290-76-87 </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" valign="top" width="100%">
+																	<span style="color: #999999; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 25px;">+38
+																		(093) 170-67-95 </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" valign="top" width="100%">
+																	<span style="color: #999999; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 25px;">+38
+																		(050) 377-28-82 </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td height="33" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" class="footer3"
+                                               valign="middle" width="75px">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="4" valign="top" width="100%">
+																	<span style="color: #999999; font-size: 18px; font-family: Arial; font-weight: 700; line-height: 25px;">Соцсети
+																	</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4" height="12" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="middle" width="40%">
+                                                     
+                                                </td>
+                                                <td valign="middle" width="33">
+                                                    <a href="https://www.facebook.com/aksmarket/" target="_blank"><img
+                                                            alt="" height="28"
+                                                            src="https://www.aks.ua/userfiles/images/web1.png"
+                                                            width="28"> </a></td>
+                                                <td valign="middle" width="28">
+                                                    <a href="https://www.instagram.com/aks.ua/" target="_blank"><img
+                                                            alt="" height="28"
+                                                            src="https://www.aks.ua/userfiles/images/web2.png"
+                                                            width="28"> </a></td>
+                                                <td valign="middle" width="40%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4" height="33" valign="top" width="100%">
+                                                     
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" colspan="3" valign="top" width="100%">
+													<span style="color: #999999; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 18px;">Все
+														права защищены © Интернет-магазин AKS 2020 </span></td>
+                                </tr>
+                                <tr>
+                                    <td align="center" colspan="3" valign="top" width="100%">
+                                        <a href="{$unsubscribe_link}" target="_blank"><span
+                                                style="color: #999999; font-size: 12px; font-family: Arial; font-weight: 400; line-height: 18px;">отписаться
+															от рассылки</span></a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" height="43" width="100%">
+                             
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--<script src="./js/min/script.min.js"></script>-->
+<script src="./js/source/parsing-logic.js"></script>
+</body>
+
+</html>
